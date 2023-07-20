@@ -1,6 +1,5 @@
 {
   "name": "disable-csp",
-  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,16 +8,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@crxjs/vite-plugin": "2.0.0-beta.18",
-    "@kobalte/core": "0.9.8",
-    "@types/chrome": "0.0.241",
-    "@types/node": "20",
-    "prettier": "3.0.0",
-    "react": "18.2.0",
-    "solid-js": "1.7.8",
+    "@crxjs/vite-plugin": "^2.0.0-beta.18",
+    "@kobalte/core": "^0.9.8",
+    "@types/chrome": "^0.0.241",
+    "@types/node": "^20.4.2",
+    "jszip": "3.10.1",
+    "prettier": "^3.0.0",
+    "react": "^18.2.0",
+    "solid-js": "^1.7.8",
     "typescript": "^5.1.6",
-    "unocss": "0.53.5",
+    "unocss": "^0.53.5",
     "vite": "^4.4.4",
     "vite-plugin-solid": "2.7.0"
+  },
+  "volta": {
+    "node": "20.4.0"
   }
 }

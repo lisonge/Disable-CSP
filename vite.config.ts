@@ -1,8 +1,9 @@
-import { defineConfig } from 'vite';
 import { crx } from '@crxjs/vite-plugin';
-import manifest from './manifest';
 import unocss from 'unocss/vite';
+import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
+import manifest from './manifest';
+import { zip } from './plugins';
 
 export default defineConfig({
   // unocss 如果在 solid 之前会造成无限卡死
@@ -13,6 +14,7 @@ export default defineConfig({
       // @ts-ignore
       manifest,
     }),
+    zip(),
   ],
   server: {
     host: `127.0.0.1`,
