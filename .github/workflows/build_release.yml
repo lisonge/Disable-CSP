@@ -1,4 +1,4 @@
-name: Release
+name: Build Release
 
 on:
   push:
@@ -18,6 +18,20 @@ jobs:
       - run: pnpm install
 
       - run: pnpm build
+
+      - name: Upload Asset
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist.zip
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Asset
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
 
       - name: Create Release
         id: create_release
