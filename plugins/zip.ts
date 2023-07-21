@@ -28,7 +28,13 @@ export const zip = (zipOption: ZipOption = {}): Plugin => {
     async closeBundle() {
       const zip = new JSZIP();
       for await (const fp of walk(`dist`)) {
-        zip.file(fp.substring(5), fs.readFile(fp));
+        /**
+         * must use .replaceAll('\\\\', '/')
+         *
+         * ![image](https://github.com/lisonge/Disable-CSP/assets/38517192/64292207-9a8b-4b1a-861c-8f634c851009)
+         */
+        const pathname = fp.substring(`dist/`.length).replaceAll(`\\`, `/`);
+        zip.file(pathname, fs.readFile(fp));
       }
       const bf = await zip.generateAsync({ type: 'nodebuffer' });
       fs.writeFile(`dist.zip`, bf);
