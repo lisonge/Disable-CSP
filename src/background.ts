@@ -1,5 +1,12 @@
 import { Config, addConfigListener, getConfig } from './utils/storage';
 
+const REMOVE_HEADERS = [
+  `content-security-policy`,
+  `content-security-policy-report-only`,
+  `x-webkit-csp`,
+  `x-content-security-policy`,
+];
+
 const { RuleActionType, HeaderOperation, ResourceType } =
   chrome.declarativeNetRequest;
 
@@ -8,24 +15,10 @@ const rules: chrome.declarativeNetRequest.Rule[] = [
     id: 1,
     action: {
       type: RuleActionType.MODIFY_HEADERS,
-      responseHeaders: [
-        {
-          operation: HeaderOperation.REMOVE,
-          header: `content-security-policy`,
-        },
-        {
-          operation: HeaderOperation.REMOVE,
-          header: `content-security-policy-report-only`,
-        },
-        {
-          operation: HeaderOperation.REMOVE,
-          header: `x-webkit-csp`,
-        },
-        {
-          operation: HeaderOperation.REMOVE,
-          header: `x-content-security-policy`,
-        },
-      ],
+      responseHeaders: REMOVE_HEADERS.map((header) => ({
+        operation: HeaderOperation.REMOVE,
+        header,
+      })),
     },
     condition: {
       urlFilter: `|http*`,
