@@ -46,14 +46,10 @@ const attach = async (tabId: number) => {
       { requestId },
     )) as { body: string; base64Encoded: boolean };
 
-    let bodyText = (
-      response.base64Encoded ? atob(response.body) : response.body
-    ).toLowerCase();
+    let bodyText = response.base64Encoded ? atob(response.body) : response.body;
 
-    if (
-      bodyText.includes(`http-equiv`) &&
-      bodyText.includes(`content-security-policy`)
-    ) {
+    const lowerText = bodyText.toLowerCase();
+    if (lowerText.includes(`content-security-policy`)) {
       const html = safe(
         () => parser.parseFromString(bodyText, `text/html`),
         () => {},
@@ -67,6 +63,8 @@ const attach = async (tabId: number) => {
             meta.remove();
           }
         });
+        // if has <!DOCTYPE html>, will miss it
+        // if not has <html> tag, will add it
         bodyText = html.documentElement.outerHTML;
       }
     }
