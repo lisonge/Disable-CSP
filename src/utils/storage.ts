@@ -5,9 +5,7 @@ type StorageListener = (changes: {
 }) => void;
 type ConfigListener = (newConfig: Config, oldConfig: Config) => void;
 
-const storage = import.meta.env.DEV
-  ? chrome.storage.local
-  : chrome.storage.sync;
+const storage = chrome.storage.local;
 
 const useStorageConfig = <T>(key: string, defaultValue: T) => {
   const [config, updateStorage] = createSignal(defaultValue);
