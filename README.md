@@ -1,5 +1,9 @@
 # Disable-CSP
 
+A browser extension to disable http header Content-Security-Policy and html meta Content-Security-Policy
+
+In the process of website development and testing, we inevitably need to inject cross-domain resources into some websites, but Content-Security-Policy prevents this. So you can use this extension to disable Content-Security-Policy so that you have a better development experience
+
 - disable http header csp
 - disable html meta csp
 

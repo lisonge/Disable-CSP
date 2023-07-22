@@ -4,16 +4,16 @@ export default <chrome.runtime.ManifestV3>{
   version: '1.0.1',
   author: `lisonge`,
   homepage_url: `https://github.com/lisonge/Disable-CSP`,
-  description: `disable http header csp and html meta csp`,
+  description: `A browser extension to disable http header Content-Security-Policy and html meta Content-Security-Policy`,
   icons: {
-    128: `src/assets/icon.png`,
+    128: `src/assets/icon-128.png`,
   },
   permissions: [`declarativeNetRequest`, `debugger`, `storage`, `tabs`],
   host_permissions: [`<all_urls>`],
   action: {
     default_popup: 'html/popup.html',
     default_icon: {
-      128: `src/assets/icon.png`,
+      128: `src/assets/icon-128.png`,
     },
   },
   background: {
