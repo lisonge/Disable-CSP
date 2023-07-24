@@ -12,7 +12,7 @@ In the process of website development and testing, we inevitably need to inject 
 ## Install
 
 - [releases](https://github.com/lisonge/Disable-CSP/releases)
-- TODO chrome webstore
+- [chrome webstore](https://chrome.google.com/webstore/detail/disable-csp/hgegihapiofjgmmgigbblnjaicgjhoko)
 - TODO edge addons
 
 ## Sample
