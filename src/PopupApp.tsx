@@ -12,7 +12,7 @@ export default function PopupApp() {
     >
       <div m-10px gap-15px flex flex-col>
         <NSwitch
-          label={<div w-125px>Disabled HTTP CSP</div>}
+          label={<div w-125px>Disable HTTP CSP</div>}
           checked={cspConfig.config().csp_http_disabled}
           onChange={(csp_http_disabled) => {
             cspConfig.updateConfig({
@@ -22,7 +22,7 @@ export default function PopupApp() {
           }}
         />
         <NSwitch
-          label={<div w-125px>Disabled HTML CSP</div>}
+          label={<div w-125px>Disable HTML CSP</div>}
           checked={cspConfig.config().csp_html_disabled}
           onChange={(csp_html_disabled) => {
             cspConfig.updateConfig({
