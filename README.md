@@ -44,3 +44,15 @@ In the process of website development and testing, we inevitably need to inject 
 ![image](https://github.com/lisonge/Disable-CSP/assets/38517192/18486f78-101c-4964-9de4-2a2a91387708)
 
 </details>
+
+## Permission Specification
+
+1.declarativeNetRequest: disable http header Content-Security-Policy, remove response headers
+
+2.debugger: disable http meta Content-Security-Policy, attach devtools then modify http response body
+
+3.storage: save disable/enable csp user config
+
+4.tabs: disable http meta Content-Security-Policy, attach the current tabId of devtools then modify http response body
+
+5.host_permissions<all_urls>: disable the Content-Security-Policy of any host
