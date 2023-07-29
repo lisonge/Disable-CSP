@@ -1,7 +1,18 @@
 import { safe } from './utils/error';
 import { getConfig } from './utils/storage';
+import { Buffer } from 'buffer';
 
 const attach = async (tabId: number) => {
+  try {
+    const target = (await chrome.debugger.getTargets().catch(() => [])).find(
+      (s) => s.tabId == tabId,
+    );
+    if (target?.attached) {
+      await chrome.debugger.detach({ tabId });
+    }
+  } catch (e) {
+    console.log(e, `zzo`);
+  }
   await chrome.debugger.attach(
     {
       tabId,
@@ -45,8 +56,9 @@ const attach = async (tabId: number) => {
       `Fetch.getResponseBody`,
       { requestId },
     )) as { body: string; base64Encoded: boolean };
-
-    let bodyText = response.base64Encoded ? atob(response.body) : response.body;
+    let bodyText = response.base64Encoded
+      ? Buffer.from(response.body, `base64`).toString('utf-8')
+      : response.body;
 
     const lowerText = bodyText.toLowerCase();
     if (lowerText.includes(`content-security-policy`)) {
@@ -73,7 +85,7 @@ const attach = async (tabId: number) => {
       requestId,
       responseCode: params.responseStatusCode ?? 200,
       responseHeaders: params.responseHeaders,
-      body: btoa(bodyText),
+      body: Buffer.from(bodyText, `utf-8`).toString(`base64`),
     });
   });
 };

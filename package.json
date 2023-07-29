@@ -12,6 +12,7 @@
     "@kobalte/core": "^0.9.8",
     "@types/chrome": "^0.0.241",
     "@types/node": "^20.4.2",
+    "buffer": "6.0.3",
     "jszip": "3.10.1",
     "prettier": "^3.0.0",
     "solid-js": "^1.7.8",
