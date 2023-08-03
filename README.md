@@ -13,7 +13,7 @@ In the process of website development and testing, we inevitably need to inject 
 
 - [releases](https://github.com/lisonge/Disable-CSP/releases)
 - [chrome webstore](https://chrome.google.com/webstore/detail/disable-csp/hgegihapiofjgmmgigbblnjaicgjhoko)
-- TODO edge addons
+- [edge addons](https://microsoftedge.microsoft.com/addons/detail/disablecsp/kleofklkancfimlfjhkjegnljkpjafcc)
 
 ## Sample
 
