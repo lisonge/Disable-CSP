@@ -8,9 +8,13 @@ export default function PopupApp() {
   return (
     <Show
       when={cspConfig.initialized()}
-      fallback={<div whitespace-nowrap>Loading...</div>}
+      fallback={
+        <div whitespace-nowrap min-w-100px>
+          Loading...
+        </div>
+      }
     >
-      <div m-10px gap-15px flex flex-col>
+      <div m-10px gap-15px flex flex-col min-w-180px>
         <NSwitch
           label={<div w-125px>Disable HTTP CSP</div>}
           checked={cspConfig.config().csp_http_disabled}
