@@ -5,7 +5,7 @@ const REMOVE_HEADERS = [
   `content-security-policy-report-only`,
   `x-webkit-csp`,
   `x-content-security-policy`,
-];
+  `x-frame-options`,
 
 const { RuleActionType, HeaderOperation, ResourceType } =
   chrome.declarativeNetRequest;
