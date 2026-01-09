@@ -9,43 +9,48 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
-      - uses: volta-cli/action@v3
+      - uses: volta-cli/action@v4
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
 
       - run: pnpm install
 
       - run: pnpm build
 
-      - name: Upload Asset
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v6
         with:
           name: dist
           path: dist.zip
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: CHANGELOG.md
+          path: CHANGELOG.md
 
   release:
     needs: build
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      - name: Download Asset
-        uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v7
         with:
           name: dist
+      - uses: actions/download-artifact@v4
+        with:
+          name: CHANGELOG.md
 
-      - name: Create Release
-        id: create_release
+      - id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
+          body_path: CHANGELOG.md
 
-      - name: Upload Release Asset
-        id: upload-release-asset
+      - id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
